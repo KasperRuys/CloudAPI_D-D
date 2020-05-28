@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { OnlineAPIService } from './online-api.service';
-import { TheClass, Subclass, TheRace } from './OnlineAPI';
+import { TheClass, Subclass, TheRace, TheSpell } from './OnlineAPI';
 
 
 @Component({
@@ -18,6 +18,7 @@ export class InternetAPIComponent implements OnInit {
   Subclass : Subclass
   test : string
   TheRace : TheRace
+  TheSpell : TheSpell
 
   setFieldsClass(value: string){
     this.OnlineAPIService.getClasses(value).subscribe(data=>{
@@ -26,6 +27,11 @@ export class InternetAPIComponent implements OnInit {
       this.test = this.TheClass.subclasses.toString();
     });
   }
+  /*setFieldsSubClass(value: string){
+    this.OnlineAPIService.getRaces(value).subscribe(data=>{
+    this.Subclass = data
+    });
+  }*/
 
   setFieldsRace(value: string){
     this.OnlineAPIService.getRaces(value).subscribe(data=>{
@@ -33,6 +39,11 @@ export class InternetAPIComponent implements OnInit {
     });
   }
 
+  setFieldsSpell(value: string){
+    this.OnlineAPIService.getSpell(value).subscribe(data=>{
+    this.TheSpell = data
+    });
+  }
   ngOnInit() {
   }
 

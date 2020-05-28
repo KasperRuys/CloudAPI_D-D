@@ -46,3 +46,34 @@
 <br>
 <br>
 <h1>Spells</h1>
+
+<app-thespells></app-thespells>
+
+
+<table *ngIf="TheSpell">
+
+    <tr>
+
+        <th>name</th>
+        <th>range</th>
+        <th>material required</th>
+        <th>duration</th>
+        <th>concentration</th>
+        <th>casting time</th>
+        <th>level</th>
+        <th>type</th>
+        <th>url</th>
+    </tr>
+    <tr  style="text-align:center">
+        
+        <td>{{TheSpell.name}}</td>
+        <td>{{TheSpell.range}}</td>
+        <td>{{TheSpell.material}}</td>
+        <td>{{TheSpell.duration}}</td>
+        <td>{{TheSpell.concentration}}</td>
+        <td>{{TheSpell.casting_time}}</td>
+        <td>{{TheSpell.level}}</td>
+        <td>{{TheSpell.school}}</td>
+        <td>{{TheSpell.url}}</td>
+    </tr>
+</table>

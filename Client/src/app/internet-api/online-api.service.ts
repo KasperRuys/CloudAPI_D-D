@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TheClass, Subclass, TheRace } from './OnlineAPI'
+import { TheClass, Subclass, TheRace, TheSpell } from './OnlineAPI'
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,10 @@ export class OnlineAPIService {
   getRaces(value: string){
     return this.client.get<TheRace>("http://www.dnd5eapi.co/api/races/" + value);
   }
-
+  
+  getSpell(value: string){
+    return this.client.get<TheSpell>("http://www.dnd5eapi.co/api/spells/" + value);
+  }
   geturl(){
     return this.client.get<TheClass>("http://www.dnd5eapi.co/api/classes/");
   }
