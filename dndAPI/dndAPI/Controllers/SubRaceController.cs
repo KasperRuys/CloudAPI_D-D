@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using dndAPI.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,12 +12,41 @@ namespace dndAPI.Controllers
 {
     [Route("api/Subrace")]
     [ApiController]
+    [Authorize]
     public class SubRaceController : ControllerBase
     {
         MyDbContext ctx;
         public SubRaceController(MyDbContext context)
         {
             this.ctx = context;
+        }
+
+        [Route("[action]")]
+        [HttpGet]
+        public List<SubRace> GetSubracesByRaceID(int RaceID, /*string RaceName, string SubRaceName,*/ int? page = 0, string sort = "SubRaceName", int length = 2, string dir = "asc")
+        {
+            //Race ID 4, length 4 = 4 subraces van Elf
+
+            IQueryable<SubRace> query = ctx.SubRaces;
+            var race = ctx.Races
+                              .SingleOrDefault(d => d.RaceID == RaceID);
+            query = query.Where(d => d.Race == race);
+            if (dir == "asc")
+            {
+                query = query.OrderBy(d => d.SubRaceName);
+            }
+            else if (dir == "desc")
+            {
+                query = query.OrderByDescending(d => d.RaceID);
+            }
+            if (page.HasValue)
+            {
+                query = query.Skip(page.Value * length);
+            }
+            
+            query = query.Take(length);
+            return query.ToList();
+
         }
 
         [HttpGet]
@@ -26,39 +56,8 @@ namespace dndAPI.Controllers
 
             return Ok(subraces);
         }
-
-
-        public List<SubRace> GetSubracesByRaceID(int SubRaceID, string RaceName, string SubRaceName, int? page = 0, string sort = "SubRaceName", int length = 2, string dir = "asc")
-        {
-            IQueryable<SubRace> query = ctx.SubRaces;
-            var race = ctx.Races
-                              .SingleOrDefault(d => d.RaceID == SubRaceID);
-            if (!string.IsNullOrEmpty(SubRaceName))
-            {
-                query = query.Where(d => d.SubRaceName == SubRaceName);
-            }
-            /* if (!string.IsNullOrEmpty(RaceName))
-            {
-             query = query.Where(d => d.Race == RaceName);
-            }*/
-               query = query.Where(d => d.Id == SubRaceID);
-               if (dir == "asc")
-               {
-                   query = query.OrderBy(d => d.SubRaceName);
-               }
-               else if (dir == "desc")
-               {
-                   query = query.OrderByDescending(d => d.RaceID);
-               }
-               if (page.HasValue)
-               {
-                   query = query.Skip(page.Value * length);
-               }
-               query = query.Take(length);
-               return query.ToList();
-
-           }
-
+        
+    
            [Route("[action]/{id}")]
            [HttpGet]
            public IActionResult Races(int id)
@@ -120,6 +119,14 @@ namespace dndAPI.Controllers
         [HttpPut]
         public IActionResult UpdateSubRace([FromBody] SubRace updateSubRace)
         {
+            /*
+             * {
+                "id": #, Subrace id you want to change
+                "subRaceName": "NewName", Subrace new name 
+                "subraceFeatures": "newFeatures", subrace new features
+                "raceID": 2 ID of the race of the new subrace
+}
+             */
             Race newRace = ctx.Races.Single(s => s.RaceID == updateSubRace.RaceID);
             var subrace = ctx.SubRaces.Find(updateSubRace.Id);
             if (subrace == null)

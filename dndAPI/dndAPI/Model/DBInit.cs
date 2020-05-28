@@ -288,7 +288,7 @@ namespace dndAPI.Model
 
                     if (!context.Classes.Any())
                     {
-                       /* var cl1 = new Class()
+                        var cl1 = new Class()
                         {
                             ClassName = "Barbarian",
                             ClassRequirements = "13 Strength",
@@ -387,16 +387,16 @@ namespace dndAPI.Model
                             //Races = 
                         };
 
-
-                      /*  var cr = new ClassRace
+ /*
+                        var cr = new ClassRace
                         {
                             Class = cl3,
-                            Race = rc1,
+                            Race = rc0,
                         };
-                        rc1.ClassRaces.Add(cr);
+                        rc0.ClassRaces.Add(cr);
                         cl3.ClassRaces.Add(cr);
-                        context.ClassRaces.Add(cr);*/
-                      /*  var cr3 = new ClassRace
+                        context.ClassRaces.Add(cr);
+                       var cr3 = new ClassRace
                         {
                             Class = cl2,
                             Race = rc1,
@@ -406,7 +406,7 @@ namespace dndAPI.Model
                         context.ClassRaces.Add(cr3);*/
 
 
-/*
+
                         context.Classes.Add(cl1);
                         context.Classes.Add(cl2);
                         context.Classes.Add(cl3);
@@ -418,7 +418,7 @@ namespace dndAPI.Model
                         context.Classes.Add(cl9);
                         context.Classes.Add(cl10);
                         context.Classes.Add(cl11);
-                        context.Classes.Add(cl12); */
+                        context.Classes.Add(cl12); 
                         // context.SaveChanges();
 
                     }

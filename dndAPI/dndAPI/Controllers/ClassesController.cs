@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using dndAPI.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,7 @@ namespace dndAPI.Controllers
 {
     [Route("API/Classes")]
     [ApiController]
+    [Authorize]
     public class ClassesController : Controller
     {
 

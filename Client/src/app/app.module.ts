@@ -1,18 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule  } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InternetAPIComponent } from './internet-api/internet-api.component';
 import { FormsModule } from '@angular/forms';
 
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireAuthModule } from "@angular/fire/auth";
-
-
-import { environment } from '../environments/environment'
 
 import { RouterModule} from '@angular/router';
 
@@ -22,6 +15,9 @@ import { ClassesComponent } from './Classes/classes.component';
 import { TheclassComponent } from './internet-api/Class/theclass/theclass.component';
 import { TheraceComponent } from './internet-api/Race/therace/therace.component';
 import { ThespellsComponent } from './internet-api/Spells/thespells/thespells.component';
+import { LoginComponentComponent } from './login-component/login-component.component';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { SubraceinputComponent } from './sub-races/SubRacesInput/subraceinput/subraceinput.component';
 
 
 @NgModule({
@@ -34,12 +30,10 @@ import { ThespellsComponent } from './internet-api/Spells/thespells/thespells.co
     TheclassComponent,
     TheraceComponent,
     ThespellsComponent,
+    LoginComponentComponent,
+    SubraceinputComponent,
   ],
   imports: [
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAnalyticsModule,
-    AngularFirestoreModule,
-    AngularFireAuthModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
@@ -51,7 +45,9 @@ import { ThespellsComponent } from './internet-api/Spells/thespells/thespells.co
       { path: "SubRaces", component: SubRacesComponent}
     ])
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

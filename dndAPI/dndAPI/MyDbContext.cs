@@ -17,7 +17,7 @@ namespace dndAPI
 
         public DbSet<Race> Races { get; set; }
         public DbSet<Class> Classes { get; set; }
-      //  public DbSet<ClassRace> ClassRaces { get; set; }
+        public DbSet<ClassRace> ClassRaces { get; set; }
 
         public MyDbContext(DbContextOptions<MyDbContext> options)
           : base(options)
@@ -27,7 +27,7 @@ namespace dndAPI
 
 
         //Modelbuilder defines the shape of your entities, the relationships between them and how they map to the database
-      /*  protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Race>().
                 HasMany(r => r.SubRaces).
@@ -51,7 +51,7 @@ namespace dndAPI
                 HasForeignKey(x => x.ClassID).
                 OnDelete(DeleteBehavior.Restrict).
                 IsRequired();
-        }*/
+        }
 
 
 

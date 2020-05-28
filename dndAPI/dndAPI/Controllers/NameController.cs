@@ -39,7 +39,9 @@ namespace dndAPI.Controllers
             var token = jwtAuthenticationManager.Authenticate(userCred.Username, userCred.Password);
             if (token == null)
                 return Unauthorized();
-            return Ok(token);
+            userCred.token = token;
+            userCred.Password = null;
+            return Ok(userCred);
         }
        
     }

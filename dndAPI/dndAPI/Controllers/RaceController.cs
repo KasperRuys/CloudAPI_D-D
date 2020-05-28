@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using dndAPI.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Razor.Language;
@@ -13,6 +14,7 @@ namespace dndAPI.Controllers
 {
     [Route("api/Race")]
     [ApiController]
+    [Authorize]
     public class RaceController : ControllerBase
     {
         MyDbContext ctx;

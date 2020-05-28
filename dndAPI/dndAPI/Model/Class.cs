@@ -23,7 +23,7 @@ namespace dndAPI.Model
 
 
 
-      //  public IList<ClassRace> ClassRaces { get; set; } 
+        public IList<ClassRace> ClassRaces { get; set; } 
 
       /*  [JsonIgnore]
         public ICollection<Race> Races { get; set; }*/

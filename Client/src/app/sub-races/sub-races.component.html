@@ -1,1 +1,20 @@
-<p>sub-races works!</p>
+<app-subraceinput></app-subraceinput>
+<table *ngIf="SubRace">
+
+        <tr>
+
+            <th>name</th>
+            <th>hit_die</th>
+            <th>subclasses</th>
+            <th>url</th>
+        </tr>
+        <tr  style="text-align:center">
+            
+            <td>{{SubRace.raceName}}</td>
+            <td>{{SubRace.raceFeatures}}</td>
+           <!-- <td>
+                <div *ngFor="let sc of TheClass.subclasses">{{ sc.name }}</div>
+            </td>
+            <td>{{TheClass.url}}</td>-->
+        </tr>
+</table>

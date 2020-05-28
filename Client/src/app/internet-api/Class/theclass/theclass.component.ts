@@ -21,8 +21,9 @@ export class TheclassComponent implements OnInit {
   }
   set SearchClass(value: string) {
     this._search = value.toLowerCase();
+  //this._search = "haha"
     if(this._search != "") {
-     this.InternetAPIComponent.setFieldsClass(this._search)
+    this.InternetAPIComponent.setFieldsClass(this._search)
       };
     }
   }

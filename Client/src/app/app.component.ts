@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthenticationService } from './shared/authentication.service';
+import { AuthenticationService } from './services/authentication.service';
+import { HttpClient } from '@angular/common/http';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -14,9 +16,9 @@ export class AppComponent {
 
   email: string;
   password: string;
-  constructor(public authenticationService: AuthenticationService) {}
+  constructor(public authenticationService: AuthenticationService, private http: HttpClient) {}
 
-  signUp() {
+  /*signUp() {
     this.authenticationService.SignUp(this.email, this.password);
     this.email = ''; 
     this.password = '';
@@ -29,6 +31,14 @@ export class AppComponent {
 
   signOut() {
     this.authenticationService.SignOut();
-  }
+  }*/
 
+  signIn() {  
+    return this.authenticationService.login(this.email, this.password).pipe(first()).subscribe(data => console.log(data));
+
+    //this.authenticationService.login(this.email, this.password);
+  }
+  test() {
+    return this.http.get<any>('https://localhost:44370/api/race').subscribe(data => console.log(data));
+  }
 }

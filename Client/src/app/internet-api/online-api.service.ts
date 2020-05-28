@@ -1,16 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TheClass, Subclass, TheRace, TheSpell } from './OnlineAPI'
+import { AuthenticationService } from '../services/authentication.service';
+import { first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OnlineAPIService {
 
-  constructor(private client: HttpClient) { }
+  constructor(private client: HttpClient, private authService: AuthenticationService) { }
 
   getClasses(value: string){
     return this.client.get<TheClass>("http://www.dnd5eapi.co/api/classes/"+value);
+  // return this.authService.login('d', 'a').pipe(first()).subscribe(data => {
+   //  console.log(data);
+  // })
+
   }
 
   getSubClasses(value: string){

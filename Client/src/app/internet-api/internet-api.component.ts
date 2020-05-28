@@ -21,17 +21,18 @@ export class InternetAPIComponent implements OnInit {
   TheSpell : TheSpell
 
   setFieldsClass(value: string){
-    this.OnlineAPIService.getClasses(value).subscribe(data=>{
+   this.OnlineAPIService.getClasses(value).subscribe(data=>{
       this.TheClass = data;
       this.TheClass.subclasses = data.subclasses;
       this.test = this.TheClass.subclasses.toString();
     });
+    //this.OnlineAPIService.getClasses(value);
   }
-  /*setFieldsSubClass(value: string){
+  setFieldsSubClass(value: string){
     this.OnlineAPIService.getRaces(value).subscribe(data=>{
     this.Subclass = data
     });
-  }*/
+  }
 
   setFieldsRace(value: string){
     this.OnlineAPIService.getRaces(value).subscribe(data=>{

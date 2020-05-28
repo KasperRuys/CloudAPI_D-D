@@ -26,7 +26,7 @@ namespace dndAPI.Model
 
 
 
-      //  public List<ClassRace> ClassRaces { get; set; }
+        public List<ClassRace> ClassRaces { get; set; }
     }
 }
 

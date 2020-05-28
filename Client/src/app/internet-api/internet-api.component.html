@@ -14,7 +14,9 @@
             
             <td>{{TheClass.name}}</td>
             <td>{{TheClass.hit_die}}</td>
-            <td>{{test}}</td>
+            <td>
+                <div *ngFor="let sc of TheClass.subclasses">{{ sc.name }}</div>
+            </td>
             <td>{{TheClass.url}}</td>
         </tr>
 </table>
@@ -61,7 +63,6 @@
         <th>concentration</th>
         <th>casting time</th>
         <th>level</th>
-        <th>type</th>
         <th>url</th>
     </tr>
     <tr  style="text-align:center">
@@ -73,7 +74,6 @@
         <td>{{TheSpell.concentration}}</td>
         <td>{{TheSpell.casting_time}}</td>
         <td>{{TheSpell.level}}</td>
-        <td>{{TheSpell.school}}</td>
         <td>{{TheSpell.url}}</td>
     </tr>
 </table>
