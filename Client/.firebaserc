@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "cloudapi-c01c0": {
+      "hosting": {
+        "DND": [
+          "cloudapi-c01c0"
+        ]
+      }
+    }
+  }
+}

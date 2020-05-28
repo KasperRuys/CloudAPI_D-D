@@ -1,0 +1,48 @@
+<p>internet-api works! hieronder api </p>
+<h1>Classes</h1>
+<app-theclass></app-theclass>
+<table *ngIf="TheClass">
+
+        <tr>
+
+            <th>name</th>
+            <th>hit_die</th>
+            <th>subclasses</th>
+            <th>url</th>
+        </tr>
+        <tr  style="text-align:center">
+            
+            <td>{{TheClass.name}}</td>
+            <td>{{TheClass.hit_die}}</td>
+            <td>{{test}}</td>
+            <td>{{TheClass.url}}</td>
+        </tr>
+</table>
+<br>
+<br>
+<h1>Races</h1>
+<app-therace></app-therace>
+<table *ngIf="TheRace">
+
+        <tr>
+
+            <th>Name</th>
+            <th>Movement</th>
+            <th>Age</th>
+            <th>Alignments</th>
+            <th>Size</th>
+            <th>Language Description</th>
+        </tr>
+        <tr  style="text-align:center">
+            
+            <td>{{TheRace.name}}</td>
+            <td>{{TheRace.speed}}</td>
+            <td>{{TheRace.age}}</td>
+            <td>{{TheRace.alignment}}</td>
+            <td>{{TheRace.size}}: {{TheRace.size_description}}</td>
+            <td>{{TheRace.language_desc}}</td>
+        </tr>
+</table>
+<br>
+<br>
+<h1>Spells</h1>
