@@ -1,6 +1,5 @@
 <app-subraceinput></app-subraceinput>
-<table *ngIf="SubRace">
-
+<table *ngIf="subRace">
         <tr>
 
             <th>name</th>
@@ -10,11 +9,8 @@
         </tr>
         <tr  style="text-align:center">
             
-            <td>{{SubRace.raceName}}</td>
-            <td>{{SubRace.raceFeatures}}</td>
-           <!-- <td>
-                <div *ngFor="let sc of TheClass.subclasses">{{ sc.name }}</div>
-            </td>
-            <td>{{TheClass.url}}</td>-->
+            <td>{{subRace.raceName}}</td>
+            <td>{{subRace.raceFeatures}}</td>
         </tr>
 </table>
+<pre>{{json}}</pre>

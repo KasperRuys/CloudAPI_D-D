@@ -11,11 +11,11 @@ import { Subrace } from '../internet-api/OnlineAPI';
 export class SubRacesComponent implements OnInit {
 
   constructor(private subraceService: SubraceService) { }
-  SubRace: Subrace;
+  subRace: Subrace;
 
   setFieldsSubRace(value: string){
     this.subraceService.getSubRaces(value).subscribe(data=>{
-    this.SubRace = data
+    this.subRace = data
     });
   }
 
